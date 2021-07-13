@@ -1,8 +1,6 @@
 /// <reference types="Cypress" />
 const dataJson = require('../../fixtures/createuser')
 
-
-
 describe('post user request', () => {
  let accessToken = '007526d9efdbc07e084ff7a6d4cfcc90588fbe20641c00faebf45a7f3b2eaf33'
 let randomText = ""
@@ -14,6 +12,7 @@ let testEmail = ""
         testEmail = randomText + '@gmail.com'
 
         cy.fixture('createuser').then((payload) =>{
+            
             //1. create user (POST)
             cy.request({
                 method: 'POST',

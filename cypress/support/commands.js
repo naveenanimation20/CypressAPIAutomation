@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.serialize = (name, email, gender, status) => {
+   // o = {x:1, y:{z:[false,null,""]}};
+    userData = {
+        name : name,
+        email: email,
+        gender: gender,
+        status: status
+    } 
+
+}
