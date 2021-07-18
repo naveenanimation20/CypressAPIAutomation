@@ -5,6 +5,12 @@ describe('post user request', () => {
  let accessToken = '007526d9efdbc07e084ff7a6d4cfcc90588fbe20641c00faebf45a7f3b2eaf33'
 let randomText = ""
 let testEmail = ""
+
+var workbook = new Excel.Workbook();
+
+
+
+
     it.only('create user test', () => {
         var pattern = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
         for (var i = 0; i < 10; i++)

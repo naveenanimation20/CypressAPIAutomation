@@ -8,7 +8,7 @@ describe('api test cases',() => {
             method : 'GET',
             url : 'https://gorest.co.in/public-api/users/123/posts',
             headers: {
-                'authorization': 'Bearer '+accesstoken,
+                'Authorization': 'Bearer '+accesstoken,
               }
         }).then((res)=>{
             expect(res.status).to.eq(200)

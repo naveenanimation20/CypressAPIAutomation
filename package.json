@@ -9,6 +9,7 @@
   "author": "Naveen AutomationLabs",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^7.7.0"
+    "cypress": "^7.7.0",
+    "exceljs": "^4.2.1"
   }
 }
