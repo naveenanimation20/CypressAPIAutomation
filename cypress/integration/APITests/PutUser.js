@@ -6,10 +6,6 @@ describe('post user request', () => {
 let randomText = ""
 let testEmail = ""
 
-var workbook = new Excel.Workbook();
-
-
-
 
     it.only('create user test', () => {
         var pattern = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"

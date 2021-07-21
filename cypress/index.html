@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button class="network-route-btn btn btn-primary">Get Comment</button>
+<div class="network-route-comment"></div>
+<button class="network-route-post btn btn-success">
+  Post Comment
+</button>
+<div class="network-route-post-comment"></div>
+<button class="network-route-put btn btn-warning">
+  Update Comment
+</button>
+<div class="network-route-put-comment"></div>
+</body>
+
+<script>
+  // place the example code into a closure to isolate its variables
+  ;(function () {
+    // we fetch all data from this REST json backend
+    const root = 'https://jsonplaceholder.cypress.io'
+
+    function getComment() {
+      $.ajax({
+        url: `${root}/comments/1`,
+        method: 'GET',
+      }).then(function (data) {
+        $('.network-route-comment').text(data.body)
+      })
+    }
+
+    function postComment() {
+      $.ajax({
+        url: `${root}/comments`,
+        method: 'POST',
+        data: {
+          name: 'Using POST in cy.route()',
+          email: 'hello@cypress.io',
+          body:
+            'You can change the method used for cy.route() to be GET, POST, PUT, PATCH, or DELETE',
+        },
+      }).then(function () {
+        $('.network-route-post-comment').text('POST successful!')
+      })
+    }
+
+    function putComment() {
+      $.ajax({
+        url: `${root}/comments/1`,
+        method: 'PUT',
+        data: {
+          name: 'Using PUT in cy.route()',
+          email: 'hello@cypress.io',
+          body:
+            'You can change the method used for cy.route() to be GET, POST, PUT, PATCH, or DELETE',
+        },
+        statusCode: {
+          404(data) {
+            $('.network-route-put-comment').text(
+              data.responseJSON.error,
+            )
+          },
+        },
+      })
+    }
+
+    $('.network-route-btn').on('click', function (e) {
+      e.preventDefault()
+      getComment(e)
+    })
+
+    $('.network-route-post').on('click', function (e) {
+      e.preventDefault()
+      postComment(e)
+    })
+
+    $('.network-route-put').on('click', function (e) {
+      e.preventDefault()
+      putComment(e)
+    })
+  })()
+</script>
+
+
+
+</html>
