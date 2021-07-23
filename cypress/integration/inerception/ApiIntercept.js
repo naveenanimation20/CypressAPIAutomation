@@ -3,6 +3,8 @@
 describe('intercept with cypress examples', ()=>{
 
 
+   
+
     it('test api with simple intercept stubbing', ()=>{
 
         cy.visit('https://jsonplaceholder.typicode.com/')
@@ -25,7 +27,6 @@ describe('intercept with cypress examples', ()=>{
 
 
     it('mocking with intercept test with static response', ()=>{
-
         cy.visit('https://jsonplaceholder.typicode.com/')
         cy.intercept('GET', '/posts', {totalpost:5 , name: 'naveen'}).as('posts')
         cy.get("table:nth-of-type(1) a[href='/posts']").click()
